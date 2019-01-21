@@ -1,4 +1,4 @@
-function time_taken = prob1(n)
+function time_taken = prob4(n)
     time_taken = linspace(0,0,size(n,2));
 
     for I = 1:size(n,2)
@@ -14,9 +14,9 @@ function taken_time = measure_time(n)
     sum = 0;
     tic
     for I = 1:n
-        sum = sum + 1;
+        for J = 1:I
+            sum = sum + 1;
+        end
     end
     taken_time = toc;
 end
-
-
