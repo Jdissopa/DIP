@@ -6,6 +6,6 @@ function orgb = rgb2orgb(input)
     lcc = rgb2lcc(input);
     
     %lcc to orgb
-    orgb = lcc2orgb(lcc);
+    orgb = lcc2orgb(lcc)';
 end
 
