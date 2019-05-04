@@ -7,7 +7,6 @@ function [rgb3Layer, rgbMtrx] = orgb2rgb(orgb, dimension)
     
     %convert lcc to rgb
     rgbMtrx = lcc2rgb(lcc)';
-    rgbMtrx = rescale(rgbMtrx, 0, 1, 'InputMin', 0, 'InputMax', 1);
     rgb3Layer = reshape(rgbMtrx', dimension);
 
 end
