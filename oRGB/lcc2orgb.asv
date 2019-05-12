@@ -28,11 +28,9 @@ function orgb = lcc2orgb(lcc)
     %                   sind(degree) cosd(degree)] * [c1(I); c2(I)];
     %end
     
-    %convert the C1C2 to CybCrg
-    [Cyb, Crg] = pol2cart(thetaOs, rho);
+    %
     
+    lcc(2:3,:) = Cybrg;
     orgb = lcc;
-    orgb(:, 2) = Cyb;
-    orgb(:, 3) = Crg;
 end
 

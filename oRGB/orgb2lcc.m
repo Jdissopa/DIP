@@ -3,11 +3,12 @@ function lcc = orgb2lcc(orgb)
 %   Detailed explanation goes here
 
     %extract Cyb, Crg
-    Cyb = orgb(2,:);
-    Crg = orgb(3,:);
+    Cyb = orgb(:,2);
+    Crg = orgb(:,3);
     
     %calculate angle for Cybrg
-    theta = atan2(Crg, Cyb);
+    %theta = atan2(Crg, Cyb);
+    [theta, rho] = cart2pol(Cyb,Crg);
     
     %calculate new theta
     thetaO = theta;
@@ -17,19 +18,24 @@ function lcc = orgb2lcc(orgb)
     thetaO(theta > -pi/2 & theta < 0) = (-pi/3) + (2/3)*(theta(theta > -pi/2 & theta < 0)+(pi/2));
     
     %calculate theta_diff
-    theta_diff = thetaO - theta;
+    %theta_diff = thetaO - theta;
     
     %loop to convert Cyb, Crg to C1, C2
-    C1C2 = zeros(2, size(theta_diff, 2));
-    for I = 1:size(theta_diff, 2)
-        degree = rad2deg(theta_diff(I));
+    %C1C2 = zeros(2, size(theta_diff, 2));
+    %for I = 1:size(theta_diff, 2)
+    %    degree = rad2deg(theta_diff(I));
         
-        C1C2(:, I) = [cosd(degree) -sind(degree); 
-                        sind(degree) cosd(degree)] * [Cyb(I); Crg(I)];
-    end
+    %    C1C2(:, I) = [cosd(degree) -sind(degree); 
+    %                    sind(degree) cosd(degree)] * [Cyb(I); Crg(I)];
+    %end
     
-    orgb(2:3,:) = C1C2;
+    %convert the CybCrg to C1C2
+    [C1, C2] = pol2cart(thetaO, rho);
+    
     lcc = orgb;
+    lcc(:,2) = C1;
+    lcc(:,3) = C2;
+    
     
 end
 

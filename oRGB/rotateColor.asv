@@ -11,16 +11,9 @@ function [orgb] = rotateColor(orgb,deg)
     [theta, rho] = cart2pol(Cyb,Crg);
     
     %add offset deg to the theta
-    theta = theta + deg2rad(deg);
+    theta =deg2rad(deg);
     
     %wrapToPi the angles
-    theta = wrapToPi(theta);
-    
-    %new Cyb, new Crg
-    [nCyb, nCrg] = pol2cart(theta, rho);
-    
-    orgb(:,2) = nCyb;
-    orgb(:,3) = nCrg;
 
 end
 

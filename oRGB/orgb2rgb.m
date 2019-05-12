@@ -3,11 +3,11 @@ function [rgb3Layer, rgbMtrx] = orgb2rgb(orgb, dimension)
 %   Detailed explanation goes here
 
     %convert orgb to lcc
-    lcc = orgb2lcc(orgb');
+    lcc = orgb2lcc(orgb);
     
     %convert lcc to rgb
-    rgbMtrx = lcc2rgb(lcc)';
-    rgb3Layer = reshape(rgbMtrx', dimension);
+    rgbMtrx = lcc2rgb(lcc);
+    rgb3Layer = reshape(rgbMtrx, dimension);
 
 end
 
