@@ -1,0 +1,24 @@
+
+rn = 198:200;
+gn = 100:255;
+bn = 100:255;
+
+b = repmat(bn',size(gn,2)*size(rn,2), 1);
+
+g = repmat(gn, size(bn,2), 1); r = r(:)
+
+
+
+rgb = [r g b];
+
+%plot 0,0,0 first
+%x = [0 0 0];
+%lcc = rgb2d2lcc(x);
+%figure
+%scatter3(lcc(:,2), lcc(:,3), lcc(:,1),10,double(x)/255, 'filled');
+%hold on
+
+lcc = rgb2d2lcc(double(rgb)/255);
+scatter3(lcc(:,2), lcc(:,3), lcc(:,1),10,double(rgb)/255, 'filled');
+%hold on
+
