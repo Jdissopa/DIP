@@ -1,6 +1,6 @@
 bf = imread('desat_rabbit.jpg');
 
-bf3Columns = reshape(double(bf)/255, [], 3);
+bf3Columns = reshape(double(bf), [], 3);
 
 rg = bf3Columns(:,1) - bf3Columns(:,2);
 yb = 1/2*(bf3Columns(:,1) + bf3Columns(:,2)) - bf3Columns(:,3);

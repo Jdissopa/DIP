@@ -1,9 +1,9 @@
-bf = imread('desat_rabbit.jpg');
+bf = imread('pale-flowers.jpg');
 
-orgb = rgb2orgb(double(bf));
+lab = rgb2lab(reshape(uint8(bf),[], 3));
 
-rg2 = orgb(:,3);
-yb2 = orgb(:,2);
+rg = lab(:,2);
+yb = lab(:,3);
 
 rhorg = std(rg);
 rhoyb = std(yb);
