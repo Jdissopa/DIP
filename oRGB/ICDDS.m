@@ -15,8 +15,11 @@ function [satImage] = ICDDS(image,k)
     l = I./Iprime;
 
     RpGpBp = (rgb - ka) .* l;
+    
+    RpGpBp = uint8(rescale(RpGpBp) * 255);
 
     satImage = reshape(RpGpBp, size(image));
+    
 
 end
 
