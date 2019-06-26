@@ -5,22 +5,23 @@ function [satImage] = ICDDSoRGB(oRGB,k)
     I = oRGB(:,1);
     
     %a = min(oRGB(:,2:3),[],2);
-    a = min(oRGB,[],2);
+    %a = min(oRGB,[],2);
+    a = I;
 
     ka = k * a;
     Iprime = I - ka;
     l = I./Iprime;
 
-    %oRpGpBp = (oRGB(:,2:3) - ka) .* l;
-    oRpGpBp = (oRGB - ka) .* l;
+    oRpGpBp = (oRGB(:,2:3) - ka) .* l;
+    %oRpGpBp = (oRGB - ka) .* l;
     
-    satImage = oRpGpBp;
+    %satImage = oRpGpBp;
     
     %oRpGpBp = uint8(rescale(RpGpBp) * 255);
 
     %satImage = reshape(RpGpBp, size(image));
     
-    %satImage = [I oRpGpBp];
+    satImage = [I oRpGpBp];
     
 
 end
