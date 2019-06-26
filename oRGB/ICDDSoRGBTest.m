@@ -3,7 +3,7 @@ BCETed = BCET(pf, 0, 255, 170);
 
 orgb = rgb2orgb(pf);
 
-ICDDSed = ICDDSoRGB(orgb,0.5);
+ICDDSed = ICDDSoRGB(orgb,0.13);
 
 newRGB = orgb2rgb(ICDDSed, size(pf));
 

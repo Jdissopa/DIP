@@ -4,38 +4,39 @@ function [satImage] = ICDDSoRGB(oRGB,k)
 
     I = oRGB(:,1);
     
-    %a = min(oRGB(:,2:3),[],2);
+    a = min(oRGB(:,2:3),[],2);
     %a = min(oRGB,[],2);
-    a = I;
+    %a = min(abs(oRGB(:,2:3)),[],2);
+    %a = min(abs(oRGB),[],2);
+    %a = I;
+    
+    idx1 = I > 127.5;
+    idx2 = I < 127.5;
 
     ka = k * a;
     Iprime = I;
-    Iprime(I > 0.5) = I(I > 0.5) - ka(I > 0.5);
-    Iprime(I < 0.5) = I(I < 0.5) + ka(I < 0.5);
+    Iprime(idx1) = I(idx1) - ka(idx1);
+    Iprime(idx2) = I(idx2) + ka(idx2);
     l = I./Iprime;
 
     %oRpGpBp = (oRGB(:,2:3) - ka) .* l;
     %oRpGpBp = (oRGB - ka) .* l;
-    Ix = Iprime .* l;
+    
+    % start of the working codes
+    %Ix = Iprime .* l;
+    
     RG = oRGB(:,2);
-    RG(RG >= 0) = RG(RG >= 0) - ka(RG >= 0);
+    RG(RG > 0) = RG(RG > 0) - ka(RG > 0);
     RG(RG < 0) = RG(RG < 0) + ka(RG < 0);
     RG = RG .* l;
+    
     YB = oRGB(:,3);
-    YB(YB >= 0) = YB(YB >= 0) - ka(YB >= 0);
+    YB(YB > 0) = YB(YB > 0) - ka(YB > 0);
     YB(YB < 0) = YB(YB < 0) + ka(YB < 0);
     YB = YB .* l;
     
-    satImage = [Ix RG YB];
+    satImage = [I RG YB];
+    %the end of the working codes
     
-    %satImage = oRpGpBp;
-    
-    %oRpGpBp = uint8(rescale(RpGpBp) * 255);
-
-    %satImage = reshape(RpGpBp, size(image));
-    
-    %satImage = [I oRpGpBp];
-    
-
 end
 
