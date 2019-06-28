@@ -17,7 +17,7 @@ function [satImage] = ICDDSoRGB(oRGB,k)
     %Iprime = I;
     %Iprime(idx1) = I(idx1) - ka(idx1);
     %Iprime(idx2) = I(idx2) + ka(idx2);
-    Iprime = I - abs(ka);
+    
     l = I./Iprime;
 
     %oRpGpBp = (oRGB(:,2:3) - ka) .* l;

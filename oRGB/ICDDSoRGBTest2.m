@@ -1,8 +1,8 @@
 
-im = p;
-k = 0.7;
+im = pale1;
+k = 0.5;
 
-%BCETed = BCET(ul, 0, 255, 50);
+%BCETed = BCET(ul, 0, 255, 130);
 
 orgb = rgb2orgb(im);
 
