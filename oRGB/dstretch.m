@@ -12,7 +12,7 @@ function [dtretched] = dstretch(input,targetMean,targetSigma)
     
     %eigenvectors must transpose first to mimic the ones in the C++ code
     [eigenvectors,~,eigenvalues] = pca(data);
-    eigenvectors = eigenvectors';
+    %eigenvectors = eigenvectors';
     
     %scaling matrix (Sc)
     eigDataSigma = sqrt(eigenvalues);
@@ -24,9 +24,9 @@ function [dtretched] = dstretch(input,targetMean,targetSigma)
     %subtract the mean from input data
     zmudata = data - dataMu;
     
-    repMu = targetMean';
+    repMu = targetMean;
     
-    transformed = zmudata*(eigenvectors' * scale * eigenvectors * stretch);
+    transformed = zmudata*(eigenvectors * scale * eigenvectors' * stretch);
     transformed = transformed + repMu;
     
     dtretched = reshape(transformed,size(input));
