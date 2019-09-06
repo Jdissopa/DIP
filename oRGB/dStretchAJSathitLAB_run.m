@@ -1,5 +1,5 @@
 
-for I = 1:3
+for I = 1:1
     for J = 1:1
         if (J == 1)
             suffix = '_good.JPG';
@@ -50,8 +50,18 @@ for I = 1:3
         %plot pictures and histogram and mean
         %figure, montage({im,rgb});
         %title(string(I));
-        figure, histogramRGB(lbtemp,256);
-        title(string(I));
+        
+        %save montage picture of retinas
+        p = [im rgb];
+        %imwrite(p,strcat('./experiment/',string(I),'_good_re.png'));
+        
+        %save histogram figure to picture
+        t = figure;
+        histogramRGB(lbtemp,256);
+        title(filename);
+        %saveas(t,strcat('./experiment/',string(I),'_good_gr.png'));
+        %close(t)
+        
         m = mean(reshape(lbtemp,[],3));
         str = strcat(filename,': ',num2str(m));
         disp(str);

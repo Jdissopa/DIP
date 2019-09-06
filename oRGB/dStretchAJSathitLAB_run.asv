@@ -1,6 +1,6 @@
 
-for I = 1:5
-    for J = 1:2
+for I = 1:1
+    for J = 1:1
         if (J == 1)
             suffix = '_good.JPG';
         else
@@ -22,9 +22,14 @@ for I = 1:5
         S = rgb2lab(double(S)/255);
         S = reshape(S,[],3);
         
+        %std of lab
+        scale = std(lab);
+        %scale(2) = scale(2) * 2.0;
+        scale(3) = scale(3) * 0.0;
+        
         %do dstretch
-        g = dstretch(lab,S);
-        g(:,3) = lab(:,3);
+        g = dstretch(lab,S,scale);
+        %g(:,3) = lab(:,3);
         
         %convert lab back to rgb
         lb = lab2rgb(g);
@@ -42,10 +47,24 @@ for I = 1:5
         %reshape the image vector back to displayable dimension
         rgb = reshape(im_vector,size(im));
         
-         
-        figure, montage({im,rgb});
-        figure, histogramRGB(lbtemp);
-        mean(reshape(lbtemp,[],3))
+        %plot pictures and histogram and mean
+        %figure, montage({im,rgb});
+        %title(string(I));
+        
+        %save montage picture of retinas
+        p = [im rgb];
+        imwrite(p,strcat('./experiment/',string(I),'_good_re.png'));
+        
+        %save histogram figure to picture
+        t = figure;
+        histogramRGB(lbtemp,256);
+        title(filename);
+        saveas(t,strcat('./experiment/',string(I),'_good_gr.png'));
+        close(t)
+        
+        m = mean(reshape(lbtemp,[],3));
+        str = strcat(filename,': ',num2str(m));
+        disp(str);
     end
 end
 
