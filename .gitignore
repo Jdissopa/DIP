@@ -38,3 +38,4 @@ oRGB/*.png
 oRGB/retinal_quality/*
 oRGB/experiment/*
 oRGB/analysis/*
+oRGB/analysisWorkspace.mat
