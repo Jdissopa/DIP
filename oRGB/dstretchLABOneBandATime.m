@@ -4,32 +4,25 @@ function [dtretched] = dstretchLABOneBandATime(im,deltaIdeal,targetMean,numbFact
     data = im;
 
     %find mean and sigma for each column
-    dataMu = mean(data);
+    datamu = mean(data);
     dataSigma = std(data);
     
     %eigenvectors must transpose first to mimic the ones in the C++ code
-    [eigenvectors,~,eigenvalues] = pca(data);
-    %eigenvectors = eigenvectors';
+    [U,~,eigenvalues] = pca(data);
     
     %scaling matrix (Sc)
     eigDataSigma = sqrt(eigenvalues);
-    scale = diag(1.0./eigDataSigma);
+    D = diag(1.0./eigDataSigma);
+    %scale = diag(eigenvalues^(-1/2));
     
     %stretching matrix (St)
     alpha = deltaIdeal / (numbFactor * dataSigma);
-    stretch = alpha;
+    Q = alpha;
     
-    %subtract the mean from input data
-    zmudata = data - dataMu;
-    %zmudata = data;
+    T = U * D * U' * Q;
+    g = (data - datamu) * T + targetMean;
     
-    repMu = targetMean;
-    
-    transformed = zmudata*(eigenvectors * scale * eigenvectors' * stretch);
-    transformed = transformed + repMu;
-    
-    %dtretched = reshape(transformed,size(input));
-    dtretched = transformed;
+    dtretched = g;
 
 end
 
