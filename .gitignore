@@ -39,3 +39,10 @@ oRGB/retinal_quality/*
 oRGB/experiment/*
 oRGB/analysis/*
 oRGB/analysisWorkspace.mat
+oRGB/ICDDS/*
+oRGB/ICDDSoRGB/*
+oRGB/KodakDataset/*
+oRGB/nopaleimages/*
+oRGB/opponentColorComparisons/*
+oRGB/paleimages/*
+oRGB/retinal_segmentation/*
