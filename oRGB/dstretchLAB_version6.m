@@ -1,8 +1,8 @@
-function [dtretched,newData] = dstretchLAB_version5(data,targetMean,deltaIdeal)
+function [dtretched,newData] = dstretchLAB_version6(data,targetMean,deltaIdeal)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 
-    %data = medfilt3(data,[3,3,3]);
+    data = medfilt3(data,[3,3,3]);
     %st = [x x x]
     st = std(data);
     datamu = mean(data);
@@ -20,12 +20,12 @@ function [dtretched,newData] = dstretchLAB_version5(data,targetMean,deltaIdeal)
     DEOneoverTwo = DE;
     DEOneoverTwo(DE ~= 0) = DE(DE ~= 0).^(-1/2);
     %% scale
-    delta = deltaIdeal ./ (st * 4);
+    delta = deltaIdeal ./ (st * 4.8);
     scale = diag(delta);
     
     %%
     T =  U * scale * U';
-    %dtretched = (data - datamu) * T + targetMean;
-    dtretched = newData * T + targetMean;
+    dtretched = (data - datamu) * T + targetMean;
+    %dtretched = newData * T + targetMean;
 
 end

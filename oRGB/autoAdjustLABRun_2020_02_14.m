@@ -29,7 +29,7 @@ for I = 6:6
     
     im3column = reshape(X,[],3);
     roi = im3column(inx,:);
-    [x,newData] = dstretchLAB_version5(double(roi),idealMean,brightRange);
+    [x,newData] = dstretchLAB_version6(double(roi),idealMean,brightRange);
     
     %adjA = (x(:,2) - 20).^1.3;
     %adjB = (x(:,3)).^0.5;
