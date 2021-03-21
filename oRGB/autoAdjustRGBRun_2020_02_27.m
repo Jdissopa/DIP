@@ -15,9 +15,9 @@ for I = 1:18
 
     im = imread(filepath);
 
-    [X, inx] = ROI(im);
+    [~, inx] = ROI(im);
     
-    im3column = reshape(X,[],3);
+    im3column = reshape(im,[],3);
     roi = im3column(inx,:);
     
     covs = cov(double(roi));

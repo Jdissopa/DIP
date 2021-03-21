@@ -7,8 +7,8 @@ function histogramRGB(RGB,bins)
     end
     histogram(RGB(:,1),bins,'FaceColor','r','EdgeColor','none')
     hold on
-    histogram(RGB(:,2),bins,'FaceColor','g','EdgeColor','none')
-    histogram(RGB(:,3),bins,'FaceColor','b','EdgeColor','none') 
+    histogram(RGB(:,2),bins,'FaceColor','g','EdgeColor','none','FaceAlpha',0.4)
+    histogram(RGB(:,3),bins,'FaceColor','b','EdgeColor','none','FaceAlpha',0.4) 
     %histogram(yellow(RGB(:,1),RGB(:,2)),bins,'FaceColor','y','EdgeColor','none')
 end
 

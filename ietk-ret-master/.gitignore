@@ -1,0 +1,9 @@
+./t/
+data/
+*.csv
+__pycache__
+.ropeproject
+paper/
+old/
+*.egg-info/
+third_party

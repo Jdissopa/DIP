@@ -3,14 +3,19 @@ function [rgb] = lab2rgbOCV(lab)
 %   Detailed explanation goes here
 
     %clamp lab
-    lab = double(uint8(lab));
+    %lab = double(uint8(lab));
     
-    %[M,N,W] = size(lab);
+    [~,~,W] = size(lab);
     
     %lab = reshape(lab,[],3);
     
-    lab(:,:,1) = lab(:,:,1) * 100 / 255;
-    lab(:,:,2:3) = lab(:,:,2:3) - 128;
+    if W == 3
+        lab(:,:,1) = lab(:,:,1) * 100 / 255;
+        lab(:,:,2:3) = lab(:,:,2:3) - 128;
+    else
+        lab(:,1) = lab(:,1) * 100 / 255;
+        lab(:,2:3) = lab(:,2:3) - 128;
+    end
     
     %lab = reshape(lab,M,N,W);
     

@@ -33,6 +33,12 @@ octave-workspace
 
 
 #custom user
+*.mat
+ietk-ret-master/iciar2020/*.pdf
+test-iekt/venv/*
+test-iekt/.idea/*
+EyeQ_Enhancement-main/.idea/*
+oRGB/*.mat
 oRGB/*.jpg
 oRGB/*.png
 oRGB/analysisWorkspace.mat

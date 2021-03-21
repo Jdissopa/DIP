@@ -1,0 +1,8 @@
+argparse
+opencv-python
+opencv-contrib-python
+matplotlib
+numpy
+pillow
+scikit-image
+scipy
