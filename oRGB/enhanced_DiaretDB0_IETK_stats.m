@@ -3,7 +3,7 @@
 input_path ='D:\workspace\DIP\oRGB\dataset\diaretdb0_v_1_1\resources\images\diaretdb0_fundus_images';
 input_files=dir(fullfile(input_path,'\*.png*'));
 
-enhanced_path = 'D:\workspace\DIP\oRGB\experiment\iekt\DiaretDB0\sharpening';
+enhanced_path = 'D:\workspace\DIP\oRGB\experiment\iekt\DiaretDB0\sC+sX\sharpening';
 enhanced_files=dir(fullfile(enhanced_path,'\*.png*'));
 
 %%
@@ -53,13 +53,13 @@ for idx = 1:n1
 %     % std RGB
 %     RGB_variables(idx,12:14) = std(double(enhanced_img_3_columns(inx,:)));
     % M3
-    RGB_variables(idx,15) = m3colorfulness(enhanced_img_3_columns(inx,:));
-    % QSSIM
-    RGB_variables(idx,16) = qssim(input_img, enhanced_img);
+%     RGB_variables(idx,15) = m3colorfulness(enhanced_img_3_columns(inx,:));
+%     % QSSIM
+%     RGB_variables(idx,16) = qssim(input_img, enhanced_img);
     % GCF
-    RGB_variables(idx,17) = getGlobalContrastFactor(enhanced_img);
+    RGB_variables(idx,17) = getGlobalContrastFactor(enhanced_img(:,:,2));
     % LOE
-    RGB_variables(idx,18) = LOE(input_img,enhanced_img);
+%     RGB_variables(idx,18) = LOE(input_img,enhanced_img);
     %%
     
     %% LAB

@@ -5,11 +5,12 @@ function [m] = mean3bands(im)
 
 if B == 3
     im = reshape(im,[],3);
-elseif B == 1
-    if C == 3
+    m = mean(im);
+elseif C == 3
+    m = mean(im);
 else
-    return
+    m = NaN(1);
 end
-m = mean(im);
+
 end
 

@@ -47,22 +47,22 @@ for idx = 1:n1
 %     % QSSIM
 %     RGB_variables(idx,16) = qssim(input_img, enhanced_img);
 %     % GCF
-%     RGB_variables(idx,17) = getGlobalContrastFactor(enhanced_img);
+    RGB_variables(idx,17) = getGlobalContrastFactor(enhanced_img(:,:,2));
 %     % LOE
 %     RGB_variables(idx,18) = LOE(input_img,enhanced_img);
     %%
     
     %% LAB
     % convert enhanced image to CIELab
-    enhanced_LAB = rgb2lab(enhanced_img_3_columns(inx,:));
-    % mean LAB
-    LAB_variables(idx,1:3) = mean(enhanced_LAB);
-    % min LAB
-    LAB_variables(idx,4:6) = min(enhanced_LAB);
-    % max LAB
-    LAB_variables(idx,7:9) = max(enhanced_LAB);
-    %std LAB
-    LAB_variables(idx,10:12) = std(enhanced_LAB);
+%     enhanced_LAB = rgb2lab(enhanced_img_3_columns(inx,:));
+%     % mean LAB
+%     LAB_variables(idx,1:3) = mean(enhanced_LAB);
+%     % min LAB
+%     LAB_variables(idx,4:6) = min(enhanced_LAB);
+%     % max LAB
+%     LAB_variables(idx,7:9) = max(enhanced_LAB);
+%     %std LAB
+%     LAB_variables(idx,10:12) = std(enhanced_LAB);
     %%
 end
 
